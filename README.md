@@ -7,67 +7,87 @@ Syntax Vision es una herramienta de escritorio desarrollada en Python para la ex
 ## Requisitos Previos
 
 ### 1. Python
-Se requiere Python 3.10 o superior. Puedes descargarlo desde [python.org](https://python.org). Durante la instalación, asegúrese de marcar la casilla **"Add Python to PATH"**.
+
+Se requiere **Python 3.10 o superior**. Puedes descargarlo desde [python.org](https://python.org). Durante la instalación, asegúrate de marcar la casilla **"Add Python to PATH"**.
 
 ### 2. Tesseract OCR
+
 Es el motor indispensable para el reconocimiento de texto:
 
-1. Descarga el instalador oficial: [Tesseract OCR para Windows](https://github.com/UB-Mannheim/tesseract/wiki).
-2. Durante la instalación, es muy importante marcar la casilla de **Additional script data** y **Additional language data** para incluir el paquete de lenguaje **Spanish (español)**.
-3. La aplicación buscará por defecto el ejecutable en la ruta: `C:\Program Files\Tesseract-OCR\tesseract.exe`.
+1. Descarga el instalador oficial: [https://github.com/UB-Mannheim/tesseract/wiki](https://github.com/UB-Mannheim/tesseract/wiki)
+2. Durante la instalación, marca la casilla de **Additional script data** y **Additional language data** para incluir el paquete de lenguaje **Spanish (español)**.
+3. La aplicación buscará por defecto el ejecutable en la ruta: `C:\Program Files\Tesseract-OCR\tesseract.exe`
 
 ---
 
 ## Instalación
 
-Sigue estos comandos en tu terminal para clonar el repositorio e instalar el proyecto de forma permanente en tu sistema:
-
 ### 1. Clonar el proyecto
+
 ```bash
-git clone https://github.com/ChrisraaaLopez/OCR-Project.git
-cd OCR-Project
+git clone https://github.com/ChrisraaaLopez/SyntaxVisionOCR.git
+cd SyntaxVisionOCR
 ```
 
-### 2. Instalación Global *(Recomendado para usar el comando siempre)*
-Para que el comando funcione en cualquier terminal nueva sin configuraciones adicionales, instala el paquete directamente en tu Python global:
+### 2. Crear un entorno virtual (Recomendado)
+
+Para mantener las dependencias aisladas y evitar conflictos:
+
+```bash
+python -m venv venv
+
+# Activar en Windows:
+venv\Scripts\activate
+
+# Activar en Linux/Mac:
+source venv/bin/activate
+```
+
+### 3. Instalación del paquete
+
+Instala el proyecto y sus dependencias de forma local. Esto habilitará el comando `syntaxvision` en tu terminal:
+
 ```bash
 pip install .
 ```
 
 ---
 
-## Uso y Comandos en Consola
+## Uso y Comandos
 
-Una vez completada la instalación, el programa se puede ejecutar desde cualquier carpeta o ventana de CMD simplemente escribiendo:
+Una vez completada la instalación, lanza la aplicación desde cualquier terminal:
+
 ```bash
 syntaxvision
 ```
 
 Al ejecutar el comando:
 
-1. Se mostrará un banner ASCII con el nombre del proyecto en la terminal.
+1. Se mostrará un banner ASCII con el nombre del proyecto.
 2. Se confirmará la conexión a la base de datos local (SQLite).
-3. Se iniciará automáticamente la interfaz gráfica del usuario (GUI).
+3. Se iniciará automáticamente la interfaz gráfica de usuario (GUI).
 
 ---
 
 ## Funcionalidades Principales
 
-- **Motor Dual:** Selección entre Tesseract (rápido para texto impreso) y EasyOCR (mejor para escritura a mano).
-- **IA Multimodal:** Opción para mejorar y reconstruir el texto extraído mediante modelos avanzados (Claude, Gemini, GPT-4o).
-- **Historial Persistente:** Almacenamiento automático de las últimas notas procesadas en una base de datos local SQLite.
-- **Captura Directa:** Integración con webcam para toma de fotografías en tiempo real.
-- **Exportación Multiformato:** Capacidad para guardar el resultado en formatos `.md`, `.pdf`, `.docx` y `.txt`.
+- **Motor Dual** — Selección entre Tesseract (rápido para texto impreso) y EasyOCR (optimizado para escritura a mano).
+- **IA Multimodal** — Opción para mejorar y reconstruir el texto extraído mediante modelos avanzados (Claude, Gemini, GPT-4o).
+- **Historial Persistente** — Almacenamiento automático de las notas procesadas en una base de datos local SQLite.
+- **Captura Directa** — Integración con webcam para toma de fotografías en tiempo real.
+- **Exportación Multiformato** — Guarda tus resultados en `.md` (con YAML frontmatter), `.pdf`, `.docx` y `.txt`.
 
 ---
 
 ## Estructura del Proyecto
+
 ```
-OCR-Project/
+SyntaxVision/
 ├── resources/               # Logos, iconos y modelos de procesamiento
-├── index.py                 # Lógica principal de la interfaz y lanzador del sistema
+├── index.py                 # Lógica principal de la interfaz y lanzador
 ├── setup.py                 # Configuración de empaquetado e instalación CLI
-└── syntax_vision_history.db # Archivo de base de datos local para el historial
+├── .gitignore               # Archivos excluidos (venv, __pycache__, etc.)
+└── syntax_vision_history.db # Base de datos local para el historial
 ```
 
 ---

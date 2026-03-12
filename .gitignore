@@ -1,0 +1,15 @@
+# Entorno virtual
+venv/
+ENV/
+env/
+
+# Archivos de Python / Compilación
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Tesseract / Imágenes temporales (si aplica)
+*.log
